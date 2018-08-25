@@ -1,20 +1,20 @@
-Konqer ilvl: 340 neck: 19
-Zandalárí ilvl: 337 neck: 17
-Reiodu ilvl: 329 neck: 17
-Tarhas ilvl: 340 neck: 18
-Temgor ilvl: 340 neck: 19
+Pufs ilvl: 335 neck: 18
+Apotekarnes ilvl: 344 neck: 19
+Blodsfrost ilvl: 340 neck: 18
+Nuduliniel ilvl: 336 neck: 18
+Maraquel ilvl: 328 neck: 15
+Illbatting ilvl: 341 neck: 18
+Neowish ilvl: 298 neck: 12
 Purplebanana ilvl: 341 neck: 19
-Argonàk ilvl:  neck: 
-Maruily ilvl: 338 neck: 17
-Argenon ilvl: 340 neck: 20
-Lillflickán ilvl: 335 neck: 16
-Apharogues ilvl:  neck: 
 Arcanebolt ilvl: 330 neck: 15
+Reiodu ilvl: 329 neck: 17
+Temgor ilvl: 340 neck: 19
+Maruily ilvl: 338 neck: 17
 Guccimage ilvl: 346 neck: 20
-Asfasfasff ilvl: 246 neck: 3
-Insanitý ilvl: 346 neck: 19
-Slemboll ilvl: 341 neck: 16
-Randknight ilvl: 336 neck: 16
-Auream ilvl: 338 neck: 16
-Starplay ilvl: 341 neck: 17
-Shaalil ilvl: 229 neck: 1
+Konqer ilvl: 340 neck: 19
+Alpharogues ilvl: 341 neck: 18
+Argenon ilvl: 340 neck: 20
+Zandalárí ilvl: 337 neck: 17
+Lillflickán ilvl: 335 neck: 16
+Tarhas ilvl: 340 neck: 18
+Agronàk ilvl: 344 neck: 20

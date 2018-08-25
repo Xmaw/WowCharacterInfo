@@ -1,10 +1,20 @@
 import requests
 
 
+class Player:
+    def __init__(self):
+        self.name = ""
+        self.realm = ""
+        self.race = ""
+        self.level = ""
+        self.ilvl = ""
+        self.neck_level = ""
+
+
 def get_ilvl(url):
     r = requests.get(url)
     item_level = ""
-    for ln in r.text.split('<div class='):
+    for ln in r.text.split('class=\"media-text\"'):
         if 'ilvl' in ln:
             for div in ln.split('\"Media-text\">'):
                 if 'ilvl</div>' in div:
@@ -22,32 +32,53 @@ def get_ilvl(url):
                             # print(word)
                             if len(word) != 0:
                                 neck_item_level = word
-
-    file = open('player_info.txt', 'a')
-    player_str = player + ' ilvl: ' + item_level + ' neck: ' + neck_item_level
-    file.write(player_str)
-    file.write('\n')
-    file.close()
     print(neck_item_level)
     print(item_level)
 
+    p = Player()
+    p.name = player
+    p.realm = realm
+    p.ilvl = item_level
+    p.neck_level = neck_item_level
+    player_list.append(p)
 
-with open('player_list.txt') as f:
-    content = f.readlines()
 
-player = ''
-realm = 'Dreanor'
-open('player_info.txt', 'w').close()
 
-for line in content:
+def get_raiders(url):
+    list = []
+    r = requests.get(url)
+    for ln in r.text.split('<tr '):
+        if '<span class=' in ln:
+            if 'Rank 3' in ln or 'Rank 2' in ln or 'Rank 1' in ln or 'guild-master' in ln:
+                for l in ln.split('\n'):
+                    if 'class=\"name\"' in l:
+                        s = l.replace('<td class=\"name\"><strong><a href=\"/wow/en/character/draenor/', '')
+                        s = s.replace('</a></strong></td>', '')
+                        name = s.split('>')
+                        print(name[1])
+                        list.append(name[1])
+    return list
 
-    player_info = line.split(' ')
-    player = player_info[0].replace('\n', '')
-    if len(player_info) > 1:
-        print("yup")
-        realm = player_info[1].replace('\n', '')
-    print(player, realm)
-    url = 'https://worldofwarcraft.com/en-gb/character/'
-    url += realm + '/'
-    url += player + '/'
-    get_ilvl(url)
+
+if __name__ == '__main__':
+    with open('player_list.txt') as f:
+        content = f.readlines()
+    realm = 'Draenor'
+    open('player_info.txt', 'w').close()
+    player_list = []
+    name_list = get_raiders('http://eu.battle.net/wow/en/guild/draenor/Ancient_Circle/roster?sort=rank&dir=a')
+    for n in name_list:
+        player = n
+        url = 'https://worldofwarcraft.com/en-gb/character/'
+        url += realm + '/'
+        url += player
+
+        print(url)
+        get_ilvl(url)
+
+    file = open('player_info.txt', 'a')
+    for p in player_list:
+        player_str = p.name + ' ilvl: ' + p.ilvl + ' neck: ' + p.neck_level
+        file.write(player_str)
+        file.write('\n')
+    file.close()
